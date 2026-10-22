@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <meta name="description" content="Tianna 的个人主页 —— 一张书桌，五个宇宙。点桌上的东西，认识我。" />
+    <meta name="theme-color" content="#0e0d0b" />
+    <title>Tianna° · 一张桌子，五个宇宙</title>
+    <link rel="preconnect" href="https://fonts.googleapis.cn" />
+    <link rel="preconnect" href="https://fonts.gstatic.cn" crossorigin />
+    <link
+      href="https://fonts.googleapis.cn/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+SC:wght@400;500;700&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles/main.css" />
+  </head>
+  <body data-universe="comic">
+    <!-- 载入画面 -->
+    <div id="loader" role="status" aria-label="载入中">
+      <div class="loader-inner">
+        <div class="loader-logo">TIANNA<sup>°</sup></div>
+        <div class="loader-sub">Crossing universes<span class="loader-dots"><i>.</i><i>.</i><i>.</i></span></div>
+        <div class="loader-bar"><div id="loaderFill"></div></div>
+        <div id="loaderPct" class="loader-pct">0%</div>
+      </div>
+    </div>
+
+    <!-- 书桌场景 -->
+    <main id="stage" aria-label="Tianna 的书桌，桌上的物件可以点击">
+      <div id="sceneInner">
+        <!-- 宇宙图层由 JS 注入 -->
+        <div id="hots"></div>
+      </div>
+      <canvas id="fx" aria-hidden="true"></canvas>
+      <div class="scanlines" aria-hidden="true"></div>
+      <div class="grain" aria-hidden="true"></div>
+      <div class="vignette" aria-hidden="true"></div>
+      <div id="tip" role="tooltip" hidden></div>
+    </main>
+
+    <!-- HUD -->
+    <header class="hud hud-top">
+      <a class="logo" href="./" aria-label="回到首页">tianna<sup>°</sup></a>
+      <nav id="dots" class="dots" aria-label="切换宇宙"></nav>
+    </header>
+
+    <footer class="hud hud-bottom">
+      <div class="universe-tag">
+        <span id="universeEarth" class="universe-earth">EARTH-1610</span>
+        <span id="universeName" class="universe-name">布鲁克林漫画</span>
+      </div>
+      <div class="hint">
+        按 <kbd>空格</kbd> 穿越宇宙<span class="hint-sep">·</span>点桌上的东西看看
+      </div>
+    </footer>
+
+    <!-- 内容面板 -->
+    <div id="panelMask" hidden></div>
+    <aside id="panel" aria-hidden="true" role="dialog" aria-modal="false">
+      <button id="panelClose" aria-label="关闭面板">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"/></svg>
+      </button>
+      <div id="panelBody"></div>
+    </aside>
+
+    <!-- 移动端控制栏 -->
+    <nav id="dock" aria-label="快速入口">
+      <div id="dockItems" class="dock-items"></div>
+      <div class="dock-universe">
+        <button id="dockPrev" class="dock-arrow" aria-label="上一个宇宙">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg>
+        </button>
+        <div class="dock-current">
+          <span id="dockEarth" class="dock-earth">EARTH-1610</span>
+          <span id="dockName" class="dock-name">布鲁克林漫画</span>
+        </div>
+        <button id="dockNext" class="dock-arrow" aria-label="下一个宇宙">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <script src="scripts/app.js" defer></script>
+  </body>
+</html>
